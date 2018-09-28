@@ -11,3 +11,7 @@ output(arr, filename)
 arr2 = input(filename)
 
 @test isequal(arr2, arr)
+
+plotname = "wave.png"
+arr = initialize()
+makeplot(arr, plotname)

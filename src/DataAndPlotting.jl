@@ -1,6 +1,7 @@
 module DataAndPlotting
 
 using HDF5
+using Plots
 
 
 
@@ -9,8 +10,8 @@ const ki = 3
 const kj = 3
 
 # Grid size
-const ni = 30
-const nj = 20
+const ni = 300
+const nj = 200
 
 # i ranges from 1...ni
 # i-1 ranges from 0...ni-1
@@ -40,7 +41,7 @@ end
 # Write data to file
 export output
 function output(arr::Array{Float64, 2}, filename::String)
-    h5write(filename, "data", arr)
+    h5write(filename, "wave", arr)
 end
 
 
@@ -48,7 +49,16 @@ end
 # Read data from file
 export input
 function input(filename::String)
-    arr = h5read(filename, "data") # , (1:ni, 1:nj))
+    arr = h5read(filename, "wave")
+end
+
+
+
+# Create a beautiful plot
+export makeplot
+function makeplot(arr::Array{Float64, 2}, filename::String)
+    heatmap(arr, clim=(-1.0, +1.0), color=:viridis)
+    savefig(filename)
 end
 
 end
