@@ -1,0 +1,4 @@
+name = "DataAndPlotting"
+uuid = "2209077a-c341-11e8-1342-0fe5c803cf1e"
+authors = ["Erik Schnetter <schnetter@gmail.com>"]
+version = "0.1.0"
