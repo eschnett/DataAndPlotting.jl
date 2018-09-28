@@ -1,5 +1,9 @@
 module DataAndPlotting
 
+using HDF5
+
+
+
 # Wave parameters
 const ki = 3
 const kj = 3
@@ -29,6 +33,14 @@ function initialize()
         arr[i,j] = sin(2π*ki*x) * sin(2π*kj*y)
     end
     arr
+end
+
+
+
+# Write data to file
+export output
+function output(arr::Array{Float64, 2}, filename::String)
+    h5write(filename, "data", arr)
 end
 
 end
